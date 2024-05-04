@@ -1,2 +1,4 @@
-package shoppingcart.ordering.model;public class Address {
+package shoppingcart.ordering.model;
+
+public class Address {
 }

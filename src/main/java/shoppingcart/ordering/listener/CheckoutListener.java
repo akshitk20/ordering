@@ -1,2 +1,4 @@
-package shoppingcart.ordering.listener;public class CheckoutListener {
+package shoppingcart.ordering.listener;
+
+public class CheckoutListener {
 }
