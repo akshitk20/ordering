@@ -5,13 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Payment {
-    private String cardName;
-    private String cardNumber;
-    private String expiration;
-    private String cvv;
+public class OrderItems {
+    private String productId;
+    private int quantity;
+    private BigDecimal price;
 }
