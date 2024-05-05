@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class BasketCheckoutDTO {
+public class BasketCheckoutDto {
     private String userName;
     private String customerId;
     private BigDecimal totalPrice;

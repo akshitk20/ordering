@@ -6,7 +6,7 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 import shoppingcart.ordering.model.OrderStatus;
 import shoppingcart.ordering.model.dto.AddressDto;
-import shoppingcart.ordering.model.dto.BasketCheckoutDTO;
+import shoppingcart.ordering.model.dto.BasketCheckoutDto;
 import shoppingcart.ordering.model.dto.OrderDto;
 import shoppingcart.ordering.model.dto.PaymentDto;
 import shoppingcart.ordering.model.request.CreateOrderRequest;
@@ -22,13 +22,13 @@ public class CheckoutListener {
     private final OrderService orderService;
 
     @KafkaListener(topics = "checkout-topic", groupId = "group_id")
-    public void consume(BasketCheckoutDTO basketCheckoutDTO) {
+    public void consume(BasketCheckoutDto basketCheckoutDTO) {
         log.info("inside checkout listener ");
         CreateOrderRequest createOrderRequest = mapToRequest(basketCheckoutDTO);
         orderService.createOrder(createOrderRequest);
     }
 
-    private CreateOrderRequest mapToRequest(BasketCheckoutDTO basketCheckoutDTO) {
+    private CreateOrderRequest mapToRequest(BasketCheckoutDto basketCheckoutDTO) {
         AddressDto shippingAddress = mapToAddressDto(basketCheckoutDTO);
         AddressDto billingAddress = mapToAddressDto(basketCheckoutDTO);
         PaymentDto paymentDto = mapToPaymentDto(basketCheckoutDTO);
@@ -46,11 +46,11 @@ public class CheckoutListener {
                 .build();
     }
 
-    private PaymentDto mapToPaymentDto(BasketCheckoutDTO basketCheckoutDTO) {
+    private PaymentDto mapToPaymentDto(BasketCheckoutDto basketCheckoutDTO) {
         return PaymentDto.builder().build();
     }
 
-    private AddressDto mapToAddressDto(BasketCheckoutDTO basketCheckoutDTO) {
+    private AddressDto mapToAddressDto(BasketCheckoutDto basketCheckoutDTO) {
         return AddressDto.builder().build();
     }
 }
