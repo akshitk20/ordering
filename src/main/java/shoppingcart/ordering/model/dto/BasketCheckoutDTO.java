@@ -1,24 +1,22 @@
-package shoppingcart.ordering.model;
+package shoppingcart.ordering.model.dto;
 
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.UUID;
+import java.math.BigDecimal;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-public class Address {
-    @Id
-    private UUID id;
+public class BasketCheckoutDTO {
+    private String userName;
+    private String customerId;
+    private BigDecimal totalPrice;
+
+    // shipping and billing address
     private String firstName;
     private String lastName;
     private String emailAddress;
@@ -26,6 +24,10 @@ public class Address {
     private String country;
     private String state;
     private String zipCode;
-    @OneToOne
-    private Order order;
+
+    // payment
+    private String cardName;
+    private String cardNumber;
+    private String expiration;
+    private String cvv;
 }

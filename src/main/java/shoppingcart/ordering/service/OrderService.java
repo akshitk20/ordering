@@ -49,7 +49,7 @@ public class OrderService {
         orderDto.getOrderItems().forEach(orderItemDto -> newOrder.getOrderItems()
                 .add(new OrderItems(orderItemDto.getProductId(),
                         orderItemDto.getQuantity(),
-                        orderItemDto.getPrice())));
+                        orderItemDto.getPrice(),newOrder)));
         return newOrder;
     }
 
@@ -64,6 +64,7 @@ public class OrderService {
 
     private Address mapToAddress(AddressDto addressDto) {
         return Address.builder()
+                .id(UUID.randomUUID())
                 .firstName(addressDto.getFirstName())
                 .lastName(addressDto.getLastName())
                 .emailAddress(addressDto.getEmailAddress())
